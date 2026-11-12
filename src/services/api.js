@@ -53,7 +53,8 @@ const result = await Promise.all(
 )
 return result;
 
- } catch (error){
+ } 
+ catch (error){
     console.error("Error fetching pokemon details:", error);
     throw error;
  }

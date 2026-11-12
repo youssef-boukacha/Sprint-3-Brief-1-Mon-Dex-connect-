@@ -50,7 +50,6 @@
 
  }
 
- displayCreatures(creatures);
 
 
  // -------------------------------------------------------------
@@ -607,13 +606,6 @@
  displayTeam();
 
 
- // -------------------------------------------------------------
- // 7. TEAM RULES
- // Maximum of six creatures, no duplicates, and clear feedback
- // when an action is rejected, plus an (x/6) counter.
- // -------------------------------------------------------------
-
-
- // -------------------------------------------------------------
- // BONUS: LocalStorage, Fetch API, sorting, comparison
- // -------------------------------------------------------------
+import { Creatures } from "./src/services/api.js";
+const pokemons = await Creatures();
+displayCreatures(pokemons);
