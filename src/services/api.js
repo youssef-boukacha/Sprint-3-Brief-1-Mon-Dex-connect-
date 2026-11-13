@@ -59,3 +59,14 @@ return result;
     throw error;
  }
 }
+export async function getPokemonTypes() {
+    const response = await fetch("https://pokeapi.co/api/v2/type");
+
+    if (!response.ok) {
+        throw new Error("Failed to fetch Pokémon types");
+    }
+
+    const data = await response.json();
+
+    return data.results.map(type => type.name);
+}

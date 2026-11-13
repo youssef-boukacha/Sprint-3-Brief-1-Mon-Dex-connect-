@@ -13,7 +13,8 @@
  // build the grid from the `creatures` array.
  // -------------------------------------------------------------
 
-import { displayCreatures } from "./src/ui.js";
+let creatures = [];
+ import { displayCreatures } from "./src/ui.js";
 
 
 
@@ -134,6 +135,14 @@ import { displayCreatures } from "./src/ui.js";
 
  // Selected type.
  let selectedType = "Tous";
+ const types = {
+    "Feu": "fire",
+    "Eau": "water",
+    "Plante": "grass",
+    "Électrik": "electric",
+    "Glace": "ice",
+    "Ténèbres": "dark"
+};
 
  // Update the list using search and filter.
  function updateCreatures() {
@@ -146,11 +155,9 @@ import { displayCreatures } from "./src/ui.js";
        .toLowerCase()
        .includes(text);
 
-     const matchesType =
-       selectedType === "Tous" ||
-       creature.type
-         .toLowerCase()
-         .includes(selectedType.toLowerCase());
+  const matchesType =
+    selectedType === "Tous" ||
+    creature.type === types[selectedType];
 
      return matchesName && matchesType;
 
@@ -585,7 +592,11 @@ const  next = document.getElementById("next")
   const pageNumber = document.getElementById("page-number")
 async function loadPage() {
   const pokemons = await Creatures(offset)
-  displayCreatures(pokemons);
+      updateCreatures();
+
+    displayCreatures(pokemons);
+
+
   pageNumber.textContent =   `Page ${page}`;
     prev.disabled = offset === 0;
 
@@ -606,3 +617,24 @@ prev.addEventListener("click", async () => {
         await loadPage();
     }
 });
+import { getPokemonTypes } from "./src/services/api.js";
+const typ = await getPokemonTypes();
+displayTypes(typ);
+
+
+function displayTypes(types) {
+    filters.innerHTML = "";
+
+    types.forEach(function(type) {
+        filters.innerHTML += `
+            <button
+                type="button"
+                class="chip shrink-0 flex gap-2
+                 overflow-x-auto 
+                whitespace-nowrap"
+                data-type="${type}">
+                ${type}
+            </button>
+        `;
+    });
+}
