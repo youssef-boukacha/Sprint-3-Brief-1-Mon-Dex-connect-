@@ -1,7 +1,6 @@
 export  async function Creatures(offset = 0)    {
 
-    const Base_URL ="https://pokeapi.co/api/v2/pokemon?limit=20&offset=${offset}";
-
+    const Base_URL =`https://pokeapi.co/api/v2/pokemon?limit=20&offset=${offset}`;
 try { 
     const response = await fetch(Base_URL) 
     

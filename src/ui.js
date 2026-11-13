@@ -1,7 +1,6 @@
 
  export function displayCreatures(list) {
 const grid = document.getElementById("grid");
-console.log("hello")
    grid.innerHTML = "";
 
    list.forEach(function(creature) {

@@ -109,7 +109,7 @@ import { displayCreatures } from "./src/ui.js";
 
      const text = search.value.toLowerCase();
 
-     const result = creatures.filter(function(creature) {
+     const result = Creatures.filter(function(creature) {
        return creature.name.toLowerCase().includes(text);
      });
 
@@ -577,7 +577,32 @@ import { Creatures } from "./src/services/api.js";
 const pokemons = await Creatures();
 displayCreatures(pokemons);
 
-const previous = document.getElementById("prev")
+let offset = 0;
+let page = 1;
+
+const prev = document.getElementById("prev")
 const  next = document.getElementById("next")
-next.addEventListener("click", 
+  const pageNumber = document.getElementById("page-number")
+async function loadPage() {
+  const pokemons = await Creatures(offset)
+  displayCreatures(pokemons);
+  pageNumber.textContent =   `Page ${page}`;
+    prev.disabled = offset === 0;
+
+}
+  await loadPage();
+
+  next.addEventListener("click", async() => {
+  offset += 20;
+  page++;
+  await loadPage();
+
+}
 )
+prev.addEventListener("click", async () => {
+    if (offset >= 20) {
+        offset -= 20;
+        page--;
+        await loadPage();
+    }
+});
