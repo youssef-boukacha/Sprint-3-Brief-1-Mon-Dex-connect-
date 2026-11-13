@@ -64,18 +64,15 @@
         </label>
       </div>
       <div class="block lg:hidden w-full">
-        <select class="field w-full font-normal">
-          <option value=" Select"> Select</option>
-          <option value="Feu">Feu</option>
-          <option value="Eau">Eau</option>
-          <option value="Plante">Plante</option>
-          <option value="Élektek">Élektek</option>
-          <option value="Glace">Glace</option>
-          <option value="Ténèbres">Ténèbres</option>
-        </select>
+      <select id="mobile-filter" class="field w-full font-normal">
+    <option value="all">Tous</option>
+</select>
 </div>
-      <div id="filters" role="group" aria-label="Filtrer par type" class="hidden lg:flex gap-2 overflow-x-auto whitespace-nowrap ">
-          <!-- <button type="button" class="chip bg-ink text-white border-ink shrink-0">Tous</button>
+<div id="filters"
+     role="group"
+     aria-label="Filtrer par type"
+     class="hidden lg:flex gap-2 overflow-x-auto whitespace-nowrap">
+</div>          <!-- <button type="button" class="chip bg-ink text-white border-ink shrink-0">Tous</button>
           <button type="button" class="chip shrink-0">Feu</button>
           <button type="button" class="chip shrink-0">Eau</button>
           <button type="button" class="chip shrink-0">Plante</button>
